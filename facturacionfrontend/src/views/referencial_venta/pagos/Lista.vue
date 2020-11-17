@@ -5,13 +5,13 @@
         <v-text-field
           v-model="search"
           append-icon="mdi-magnify"
-          label="Filtrar Compras"
+          label="Filtrar Pagos"
           single-line
           hide-details
         ></v-text-field>
       </v-flex>
       <v-flex xs2>
-        <v-row align="right" justify="space-around">
+        <v-row align="left" justify="space-around">
           <v-btn tile color="secondary" @click="activarModal">
             <v-icon left> add_task </v-icon>
             Nuevo
@@ -21,18 +21,14 @@
     </v-card-title>
     <v-data-table
       :headers="headers"
-      :items="Compras.compras"
+      :items="Pagos.pagos"
       :search="search"
       class="elevation-1"
     >
-      <template v-slot:[`item.actions`]="{ item }">
-        <v-icon small class="mr-2" @click="editItem(item)"> payment </v-icon>
-        <v-icon small @click="deleteItem(item)"> delete </v-icon>
-      </template>
     </v-data-table>
     <!-- Dialogo PAGOS registro -->
-    <v-dialog v-model="modalPagos" hide-overlay fluid max-width="800px">
-      <Formulario/>
+    <v-dialog v-model="dialog" hide-overlay fluid>
+      
     </v-dialog>
     <!-- Dialogo eliminar registro -->
     <v-dialog v-model="dialog" hide-overlay fluid max-width="800px">
@@ -64,7 +60,6 @@
 
 <script>
 import { mapState } from "vuex";
-import Formulario from "../pagos/Formulario";
 export default {
   data() {
     return {
@@ -72,23 +67,18 @@ export default {
       itemSelected:"",
       dialog: false,
       headers: [
-        { text: "Numero de Factura", value: "numerofactura" },
-        { text: "Fecha de Compra", value: "fechacompra" },
-        { text: "Total Factura", value: "total" },
-        { text: "Proveedor", value: "nombreproveedor" },
-        {text: "Saldo", value: "saldo"},
-        { text: "Opciones", value: "actions" },
+        { text: "ID Pago", value: "idpagos" },
+        { text: "Monto Pago", value: "montopago" },
+        { text: "Fecha pago ", value: "fechapago" },
+        { text: "Numero Factura", value: "numerofactura" },
       ],
     };
   },
-  components:{
-    Formulario,
-  },
   mounted() {
-    this.$store.dispatch("getCompra");
+    this.$store.dispatch("getPagos");
   },
   computed: {
-    ...mapState(["Compras", "Pagos"]),
+    ...mapState(["Pagos"]),
     modal: {
       get() {
         return this.$store.getters.getModal;
@@ -97,39 +87,28 @@ export default {
         this.$store.dispatch("switchDialog", value);
       },
     },
-    modalPagos: {
-      get() {
-        return this.$store.getters.getModal2;
-      },
-      set(value) {
-        this.$store.dispatch("switchDialog2", value);
-      },
-    },
   },
   methods: {
     limpiarDatos(){
-      this.$store.state.Compras.compra.idcompras = "";
-      this.$store.state.Compras.compra.numerofactura = "";
-      this.$store.state.Compras.compra.fechacompra = "";
-      this.$store.state.Compras.compra.total = "";
-      this.$store.state.Compras.compra.proveedor_idproveedor = "";
-      this.$store.state.Compras.compra.saldo = "";
-      this.$store.state.Compras.compra.nombreproveedor = "";
+      this.$store.state.Pagos.pago.idpagos = "";
+      this.$store.state.Pagos.pago.montopago = "";
+      this.$store.state.Pagos.pago.fechapago = "";
+      this.$store.state.Pagos.pago.numerofactura = "";
+      this.$store.state.Pagos.pago.compras_idcompras = "";
     },
     editItem(item) {
-      console.log(item);
-      this.Pagos.pago.montopago = item.saldo;
-      this.Pagos.pago.compras_idcompras = item.idcompras;
-      this.Pagos.pago.numerofactura = item.numerofactura;   
-      this.$store.state.Compras.compra = item;
-      this.$store.state.Compras.compra.nombreproveedor = item.nombre;
-      this.modalPagos = true;
-      console.log(this.modalPagos)
+      this.modal = !this.modal;
+      this.$store.state.Pagos.pago.idpagos = item.idpagos;
+      this.$store.state.Pagos.pago.montopago = item.montopago;
+      this.$store.state.Pagos.pago.fechapago = item.fechapago;
+      this.$store.state.Pagos.pago.numerofactura = item.numerofactura;
+      this.$store.state.Pagos.pago.compras_idcompras  = item.compras_idcompras;    
+      this.$store.state.Pagos.editar = true;
       // console.log(item);
     },
     activarModal() {
       this.modal = !this.modal;
-      //this.modalPago = false;
+      this.$store.state.Pagos.editar = false;
       this.limpiarDatos();
     },
     deleteItem(item){
@@ -138,8 +117,8 @@ export default {
     },
     confirmardelete(){
       this.dialog = !this.dialog;
-      this.$store.state.Compras.compra.idcompras = this.itemSelected.idcompras;
-      this.$store.dispatch("eliminarCompra");
+      this.$store.state.Pagos.pago.idpagos = this.itemSelected.idpagos;
+      this.$store.dispatch("eliminarPagos");
     }
   },
 };

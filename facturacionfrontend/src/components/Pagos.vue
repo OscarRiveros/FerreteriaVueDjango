@@ -9,10 +9,10 @@
   </v-container>
 </template>
 <script>
-import Lista from "../views/referencial_venta/compras/Lista";
-import Formulario from "../views/referencial_venta/compras/Formulario";
+import Lista from "../views/referencial_venta/pagos/Lista";
+import Formulario from "../views/referencial_venta/pagos/Formulario";
 export default {
-  name: "Compras",
+  name: "Pagos",
   components: {
     Lista,
     Formulario,

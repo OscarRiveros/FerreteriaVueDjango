@@ -12,6 +12,7 @@ const URL_API = "http://127.0.0.1/api/compras/"
         estado:"1",
         proveedor_idproveedor:"",
         saldo:"",
+        nombreproveedor:"",
     },
     editar: false
   };
@@ -30,7 +31,8 @@ const URL_API = "http://127.0.0.1/api/compras/"
                 commit('SET_COMPRA', result);
             });
       },
-      insert_Compra({commit}){
+      insert_Compra({commit, dispatch}){
+        console.log(state.compra)
         if (!state.editar) {
           state.compra.saldo = state.compra.total;
           axios

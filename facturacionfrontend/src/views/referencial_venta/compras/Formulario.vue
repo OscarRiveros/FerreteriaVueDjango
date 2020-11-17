@@ -81,6 +81,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import ComprasVue from '../../../components/Compras.vue';
 export default {
   data: () => ({
     valid: true,
@@ -98,8 +99,10 @@ export default {
   methods: {
     Guardar() {
       this.$refs.form.validate();
+      let nombreproveedor = this.Proveedor.proveedores.filter(nombre => nombre.idproveedor === this.Compras.compra.proveedor_idproveedor);
+      this.Compras.compra.nombreproveedor = nombreproveedor[0].nombre;
       this.$store.dispatch("insert_Compra");
-      // this.$store.dispatch("getProductos");
+      //this.$store.dispatch("getProductos");
     },
   },
 };

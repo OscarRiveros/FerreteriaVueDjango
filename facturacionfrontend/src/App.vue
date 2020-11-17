@@ -25,7 +25,7 @@
           <v-list-group>
             <v-list-item slot="activator">
               <v-list-item-icon>
-                <v-icon>view_list</v-icon>
+                <v-icon>settings_applications</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title>Adm Productos</v-list-item-title>
@@ -51,7 +51,7 @@
           <v-list-group>
              <v-list-item slot="activator">
               <v-list-item-icon>
-                <v-icon>view_list</v-icon>
+                <v-icon>assignment_returned</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title>Compras</v-list-item-title>
@@ -124,14 +124,14 @@ export default {
     // Administrar Productos
     admProductos: [
       { title: "Productos", icon: "add_business", go: "/producto" },
-      { title: "Categoria", icon: "forum", go: "/Categorias" },
-      { title: "U de Medidas", icon: "home", go: "umedidas" },
+      { title: "Categoria", icon: "category", go: "/Categorias" },
+      { title: "U de Medidas", icon: "square_foot", go: "umedidas" },
       { title: "Proveedor", icon:"perm_identity", go:"/proveedor"},
       { title: "Cliente", icon:"perm_identity", go:"/cliente"},
     ],
     Compras: [
-      { title: "Compras", icon:"add_business", go: "/compras"},
-      { title: "Pagos", icon:"add_business", go: "/pagos"},
+      { title: "Compras", icon:"shopping_cart", go: "/compras"},
+      { title: "Pagos", icon:"credit_card", go: "/pagos"},
     ],
   }),
 };
