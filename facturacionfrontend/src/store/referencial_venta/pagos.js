@@ -11,6 +11,7 @@ export const state = {
         fechapago: new Date().toISOString().substr(0, 10),
         numerofactura: "",
         compras_idcompras: "",
+        nombreproveedor: "",
 
     },
     editar: false,

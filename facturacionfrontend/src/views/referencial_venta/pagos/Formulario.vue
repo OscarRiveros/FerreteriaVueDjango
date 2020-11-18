@@ -65,6 +65,16 @@
                 v-model="Pagos.pago.compras_idcompras"
               ></v-autocomplete>
             </v-flex>
+            <!-- Proveedor -->
+            <v-flex xs12 sm12 md6>
+              <v-autocomplete
+                :items="Compras.compras"
+                :item-text="(item) => `${item.proveedor_idproveedor} - ${item.nombreproveedor}`"
+                item-value="nombreproveedor"
+                label="Proveedor"
+                v-model="Pagos.pago.nombreproveedor"
+              ></v-autocomplete>
+            </v-flex>
             <v-flex>
               <v-btn
                 :disabled="!valid"

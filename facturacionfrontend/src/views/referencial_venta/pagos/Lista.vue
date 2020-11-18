@@ -71,6 +71,7 @@ export default {
         { text: "Monto Pago", value: "montopago" },
         { text: "Fecha pago ", value: "fechapago" },
         { text: "Numero Factura", value: "numerofactura" },
+        { text: "Nombre Proveedor ", value: "nombreproveedor" }
       ],
     };
   },
@@ -95,6 +96,7 @@ export default {
       this.$store.state.Pagos.pago.fechapago = "";
       this.$store.state.Pagos.pago.numerofactura = "";
       this.$store.state.Pagos.pago.compras_idcompras = "";
+      this.$store.state.Pagos.pago.nombreproveedor = "";
     },
     editItem(item) {
       this.modal = !this.modal;
@@ -102,7 +104,8 @@ export default {
       this.$store.state.Pagos.pago.montopago = item.montopago;
       this.$store.state.Pagos.pago.fechapago = item.fechapago;
       this.$store.state.Pagos.pago.numerofactura = item.numerofactura;
-      this.$store.state.Pagos.pago.compras_idcompras  = item.compras_idcompras;    
+      this.$store.state.Pagos.pago.compras_idcompras  = item.compras_idcompras;
+      this.$store.state.Pagos.pago.nombreproveedor = item.nombreproveedor;    
       this.$store.state.Pagos.editar = true;
       // console.log(item);
     },

@@ -122,7 +122,8 @@ export default {
       this.Pagos.pago.compras_idcompras = item.idcompras;
       this.Pagos.pago.numerofactura = item.numerofactura;   
       this.$store.state.Compras.compra = item;
-      this.$store.state.Compras.compra.nombreproveedor = item.nombre;
+      this.$store.state.Compras.compra.nombreproveedor = item.nombreproveedor;
+      this.Pagos.pago.nombreproveedor = item.nombreproveedor;
       this.modalPagos = true;
       console.log(this.modalPagos)
       // console.log(item);

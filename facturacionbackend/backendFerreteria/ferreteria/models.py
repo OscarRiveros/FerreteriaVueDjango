@@ -66,6 +66,7 @@ class Pagos(models.Model):
     fechapago = models.DateField(blank=True, null=True)
     numerofactura = models.CharField(max_length=45, blank=True, null=True)
     compras_idcompras = models.ForeignKey(Compras, models.DO_NOTHING, db_column='compras_idcompras')
+    nombreproveedor = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
         managed = False
