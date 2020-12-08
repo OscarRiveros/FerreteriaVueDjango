@@ -32,7 +32,7 @@
     </v-data-table>
     <!-- Dialogo PAGOS registro -->
     <v-dialog v-model="modalPagos" hide-overlay fluid max-width="800px">
-      <Formulario/>
+      <Formulario />
     </v-dialog>
     <!-- Dialogo eliminar registro -->
     <v-dialog v-model="dialog" hide-overlay fluid max-width="800px">
@@ -42,23 +42,14 @@
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn
-            color="blue darken-2"
-            text
-            @click="dialog = false"
-          >
+          <v-btn color="blue darken-2" text @click="dialog = false">
             Cancelar
           </v-btn>
-          <v-btn
-            color="red"
-            text
-            @click="confirmardelete"
-          >
-            Eliminar
-          </v-btn>
+          <v-btn color="red" text @click="confirmardelete"> Eliminar </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-btn type="button" @click="imprimir">Lista de Compras</v-btn>
   </v-card>
 </template>
 
@@ -69,19 +60,19 @@ export default {
   data() {
     return {
       search: "",
-      itemSelected:"",
+      itemSelected: "",
       dialog: false,
       headers: [
         { text: "Numero de Factura", value: "numerofactura" },
         { text: "Fecha de Compra", value: "fechacompra" },
         { text: "Total Factura", value: "total" },
         { text: "Proveedor", value: "nombreproveedor" },
-        {text: "Saldo", value: "saldo"},
+        { text: "Saldo", value: "saldo" },
         { text: "Opciones", value: "actions" },
       ],
     };
   },
-  components:{
+  components: {
     Formulario,
   },
   mounted() {
@@ -107,7 +98,7 @@ export default {
     },
   },
   methods: {
-    limpiarDatos(){
+    limpiarDatos() {
       this.$store.state.Compras.compra.idcompras = "";
       this.$store.state.Compras.compra.numerofactura = "";
       this.$store.state.Compras.compra.fechacompra = "";
@@ -120,12 +111,12 @@ export default {
       console.log(item);
       this.Pagos.pago.montopago = item.saldo;
       this.Pagos.pago.compras_idcompras = item.idcompras;
-      this.Pagos.pago.numerofactura = item.numerofactura;   
+      this.Pagos.pago.numerofactura = item.numerofactura;
       this.$store.state.Compras.compra = item;
       this.$store.state.Compras.compra.nombreproveedor = item.nombreproveedor;
       this.Pagos.pago.nombreproveedor = item.nombreproveedor;
       this.modalPagos = true;
-      console.log(this.modalPagos)
+      console.log(this.modalPagos);
       // console.log(item);
     },
     activarModal() {
@@ -133,18 +124,33 @@ export default {
       //this.modalPago = false;
       this.limpiarDatos();
     },
-    deleteItem(item){
+    deleteItem(item) {
       this.dialog = !this.dialog;
-      this.itemSelected = item
+      this.itemSelected = item;
     },
-    confirmardelete(){
+    confirmardelete() {
       this.dialog = !this.dialog;
       this.$store.state.Compras.compra.idcompras = this.itemSelected.idcompras;
       this.$store.dispatch("eliminarCompra");
-    }
+    },
+    imprimir() {
+      const producto_F = this.Compras.compras;
+      printJS({
+        printable: producto_F,
+        properties: [
+          { field: "numerofactura", displayName: "Numero de Factura" },
+          { field: "fechacompra", displayName: " Fecha de Compra" },
+          { field: "nombreproveedor", displayName: "Proveedor" },
+          { field: "total", displayName: "Total Factura " },
+          { field: "saldo", displayName: "Saldo" },
+        ],
+        type: "json",
+        gridHeaderStyle: "color: Silver;  border: 6px solid green;",
+        gridStyle: "border: 1px solid green;",
+        header: "Lista Gral de Compras",
+        documentTitle: "Ferreteria San Luis",
+      });
+    },
   },
 };
 </script>
-
-<style>
-</style>
