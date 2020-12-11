@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from ferreteria.views import CategoriaViewSet, UnidadMedidaViewSet, ProveedorViewSet, ProductoViewSet, ClienteViewSet, VentasViewSet, DetalleVentaViewSet, ComprasViewSet, PagosViwewSet
+from ferreteria.views import CategoriaViewSet, UnidadMedidaViewSet, ProveedorViewSet, ProductoViewSet, ClienteViewSet, ComprasViewSet, PagosViwewSet
 from rest_framework import routers
+from ferreteria import views
 
 router = routers.DefaultRouter()
 router.register('categoria', CategoriaViewSet)
@@ -25,8 +26,8 @@ router.register('unidadmedida', UnidadMedidaViewSet)
 router.register('proveedor', ProveedorViewSet)
 router.register('producto', ProductoViewSet)
 router.register('cliente',ClienteViewSet)
-router.register('ventas', VentasViewSet)
-router.register('detalleventa', DetalleVentaViewSet)
+# router.register('venta', VentasViewSet, basename='venta')
+# router.register('detalleventa', DetalleVentaViewSet)
 router.register('compras', ComprasViewSet)
 router.register('pagos', PagosViwewSet)
 
@@ -35,4 +36,5 @@ router.register('pagos', PagosViwewSet)
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    url(r"^api/", include('ferreteria.urls')),
 ]

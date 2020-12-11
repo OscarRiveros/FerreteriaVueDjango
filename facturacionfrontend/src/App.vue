@@ -74,6 +74,20 @@
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
+          <v-list-item v-for="venta in Ventas"
+              :key="venta.title"
+              link>
+              <v-list-item-icon>
+                <v-icon>{{ venta.icon }}</v-icon>
+              </v-list-item-icon>
+            <v-list-item-content>
+                <v-list-item-title
+                  ><v-btn text :to="venta.go">{{
+                    venta.title
+                  }}</v-btn></v-list-item-title
+                >
+              </v-list-item-content>
+          </v-list-item>
         </template>
         <!-- Fin Menu administrar Productos -->
       </v-list>
@@ -133,6 +147,9 @@ export default {
       { title: "Compras", icon:"shopping_cart", go: "/compras"},
       { title: "Pagos", icon:"credit_card", go: "/pagos"},
     ],
+    Ventas:[
+      { title: "Ventas", icon:"shopping_cart", go: "/ventas"},
+    ]
   }),
 };
 </script>

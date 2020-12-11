@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ferreteria',
         'USER': 'root',
-        'PASSWORD': '12345',
+        'PASSWORD': '<developer>1234',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
@@ -131,7 +131,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
