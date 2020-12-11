@@ -88,6 +88,32 @@
                 >
               </v-list-item-content>
           </v-list-item>
+          <v-list-group>
+             <v-list-item slot="activator">
+              <v-list-item-icon>
+                <v-icon>assignment_returned</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>Graficos</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item
+              v-for="Graficos in Graficos"
+              :key="Graficos.title"
+              link
+            >
+              <v-list-item-icon>
+                <v-icon>{{ Graficos.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title
+                  ><v-btn text :to="Graficos.go">{{
+                    Graficos.title
+                  }}</v-btn></v-list-item-title
+                >
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
         </template>
         <!-- Fin Menu administrar Productos -->
       </v-list>
@@ -120,7 +146,7 @@
 
 <script>
 // import HelloWorld from "./components/HelloWorld";
-import Categoria from './components/Categoria'
+import Categoria from './components/Categoria';
 export default {
   name: "App",
 
@@ -149,7 +175,10 @@ export default {
     ],
     Ventas:[
       { title: "Ventas", icon:"shopping_cart", go: "/ventas"},
-    ]
+    ],
+    Graficos: [
+      { title: "Graficos Productos", icon:"shopping_cart", go: "/graficos"},
+    ],
   }),
 };
 </script>

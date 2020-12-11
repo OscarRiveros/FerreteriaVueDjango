@@ -51,8 +51,11 @@ const routes = [
     name: 'Ventas',
     component: () => import('../components/Ventas.vue')
   },
-  
-
+  {
+    path: '/graficos',
+    name: 'Graficos',
+    component: () => import(/* webpackChunkName: "about" */ '../views/referencial_venta/graficos/ProductosGrafico.vue')
+  },
 ]
 
 const router = new VueRouter({
