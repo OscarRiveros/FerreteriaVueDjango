@@ -50,9 +50,9 @@ class DetalleVenta(models.Model):
     ventas_idventas = models.OneToOneField('Ventas', models.DO_NOTHING, db_column='ventas_idventas', primary_key=True)
     producto_idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='producto_idproducto')
     cantidad = models.IntegerField(blank=True, null=True)
-    iva5 = models.DecimalField(db_column='IVA5', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
-    iva10 = models.DecimalField(db_column='IVA10', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
-    precioventa = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    iva5 = models.DecimalField(db_column='IVA5', max_digits=5, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    iva10 = models.DecimalField(db_column='IVA10', max_digits=5, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    precioventa = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -130,9 +130,9 @@ class Ventas(models.Model):
     numerofactura = models.CharField(max_length=45, blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
     cliente_idcliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cliente_idcliente')
-    totaliva5 = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
-    totaliva10 = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
-    total = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    totaliva5 = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    totaliva10 = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    total = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
     class Meta:
         managed = False
