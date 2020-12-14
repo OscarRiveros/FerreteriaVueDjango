@@ -74,32 +74,21 @@
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
-          <v-list-group>
-             <v-list-item slot="activator">
+          <v-list-item v-for="venta in Ventas"
+              :key="venta.title"
+              link>
               <v-list-item-icon>
-                <v-icon>assignment_returned</v-icon>
+                <v-icon>{{ venta.icon }}</v-icon>
               </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>Graficos</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item
-              v-for="Graficos in Graficos"
-              :key="Graficos.title"
-              link
-            >
-              <v-list-item-icon>
-                <v-icon>{{ Graficos.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+            <v-list-item-content>
                 <v-list-item-title
-                  ><v-btn text :to="Graficos.go">{{
-                    Graficos.title
+                  ><v-btn text :to="venta.go">{{
+                    venta.title
                   }}</v-btn></v-list-item-title
                 >
               </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
+          </v-list-item>
+         
         </template>
         <!-- Fin Menu administrar Productos -->
       </v-list>
@@ -159,8 +148,8 @@ export default {
       { title: "Compras", icon:"shopping_cart", go: "/compras"},
       { title: "Pagos", icon:"credit_card", go: "/pagos"},
     ],
-    Graficos: [
-      { title: "Graficos Productos", icon:"shopping_cart", go: "/graficos"},
+    Ventas:[
+      { title: "Ventas", icon:"shopping_cart", go: "/ventas"},
     ],
   }),
 };

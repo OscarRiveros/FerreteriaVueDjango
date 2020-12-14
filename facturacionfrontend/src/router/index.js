@@ -47,12 +47,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../components/Pagos.vue')
   },
   {
+    path: '/ventas',
+    name: 'Ventas',
+    component: () => import('../components/Ventas.vue')
+  },
+  {
     path: '/graficos',
     name: 'Graficos',
     component: () => import(/* webpackChunkName: "about" */ '../views/referencial_venta/graficos/ProductosGrafico.vue')
   },
-
-
 ]
 
 const router = new VueRouter({

@@ -15,14 +15,24 @@ const URL_API = "http://127.0.0.1/api/producto/"
         proveedor_idproveedor:"",
         unidad_de_medida_idunidadmedida:"",
     },
-    editar: false
+    editar: false,
+    codigoProducto: "",
   };
   export const mutations= {
       SET_PRODUCTO(state, productos){
           state.productos = productos
       },
+
+      GET_PRODUCTO(state, value){
+        console.log("Muttations: ", value)
+        state.Producto = value;
+    },
   };
   export const actions= {
+    getProducto({commit}, item){
+        console.log("Item recibido", item);
+        commit("GET_PRODUCTO", item);
+    },
       getItems({commit}){
           console.log("Obteniendo Productos")
           axios

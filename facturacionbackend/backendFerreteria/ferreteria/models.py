@@ -47,17 +47,16 @@ class Compras(models.Model):
 
 
 class DetalleVenta(models.Model):
-    ventas_idventas = models.OneToOneField('Ventas', models.DO_NOTHING, db_column='ventas_idventas', primary_key=True)
+    ventas_idventas = models.ForeignKey('Ventas', models.DO_NOTHING, db_column='ventas_idventas')
     producto_idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='producto_idproducto')
-    cantidad = models.IntegerField(blank=True, null=True)
-    iva5 = models.DecimalField(db_column='IVA5', max_digits=5, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    iva10 = models.DecimalField(db_column='IVA10', max_digits=5, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    precioventa = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    cantidad = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    iva5 = models.DecimalField(db_column='IVA5', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    iva10 = models.DecimalField(db_column='IVA10', max_digits=10, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    precioventa = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'detalle_venta'
-        unique_together = (('ventas_idventas', 'producto_idproducto'),)
 
 
 class Pagos(models.Model):
@@ -77,9 +76,9 @@ class Pagos(models.Model):
 class Producto(models.Model):
     idproducto = models.AutoField(primary_key=True)
     codigobarra = models.CharField(db_column='codigoBarra', unique=True, max_length=250)  # Field name made lowercase.
-    preciocompra = models.DecimalField(db_column='precioCompra', max_digits=10, decimal_places=0)  # Field name made lowercase.
-    precioventa = models.DecimalField(db_column='PrecioVenta', max_digits=10, decimal_places=0)  # Field name made lowercase.
-    stock = models.IntegerField(blank=True, null=True)
+    preciocompra = models.DecimalField(db_column='precioCompra', max_digits=10, decimal_places=2)  # Field name made lowercase.
+    precioventa = models.DecimalField(db_column='PrecioVenta', max_digits=10, decimal_places=2)  # Field name made lowercase.
+    stock = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     descripcion = models.CharField(max_length=45)
     categoria_idcategoria = models.ForeignKey(Categoria, models.DO_NOTHING, db_column='categoria_idcategoria')
     proveedor_idproveedor = models.ForeignKey('Proveedor', models.DO_NOTHING, db_column='proveedor_idproveedor')
@@ -127,12 +126,12 @@ class Usuarios(models.Model):
 
 class Ventas(models.Model):
     idventas = models.AutoField(primary_key=True)
-    numerofactura = models.CharField(max_length=45, blank=True, null=True)
+    numerofactura = models.CharField(unique=True, max_length=45, blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
     cliente_idcliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cliente_idcliente')
-    totaliva5 = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    totaliva10 = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    total = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    totaliva5 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    totaliva10 = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     class Meta:
         managed = False
