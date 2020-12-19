@@ -80,8 +80,8 @@ export default {
   },
   methods:{
     removeItem(item) {
-      console.log(item);
-      this.Ventas.listaVentas.splice(item, 1);
+      console.log("Removiendo ítem: ", item);
+      this.Venta.listaVentas.splice(item, 1);
     }
   }
 };
