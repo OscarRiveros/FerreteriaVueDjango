@@ -75,6 +75,8 @@ export const actions = {
                 .post(URL_API, {cabecera: state.cabecera_venta, detalle: state.listaVentas})
                 .then(() => {
                     console.log("Good luck!", rootState.Productos.productos);
+                    state.listaVentas=[]
+                    state.cabecera_venta =[]
                 }).catch((err) => {
                     console.log("error: ", err);
                 });

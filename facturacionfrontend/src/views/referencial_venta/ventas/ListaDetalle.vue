@@ -81,7 +81,7 @@ export default {
   methods:{
     removeItem(item) {
       console.log(item);
-      this.Ventas.listaVentas.splice(item, 1);
+      this.Venta.listaVentas.splice(item, 1);
     }
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <v-card outlined class="mx-auto">
-    <v-form >
+    <v-form>
       <v-container>
         <v-row>
           <!-- Productos -->
@@ -16,7 +16,8 @@
                   dark
                   color="indigo"
                   @click="modal = !modal"
-                > +
+                >
+                  +
                   <!-- <v-icon dark> mdi-plus </v-icon> -->
                 </v-btn>
               </template>
@@ -108,6 +109,11 @@ export default {
   },
 
   methods: {
+    limpiardatos(){
+      this.add_Venta.descripcion = "";
+      this.add_Venta.precioventa = "";
+      this.add_Venta.cantidad ="";
+    },
     detalle_venta() {
       return {
         ventas_idventas: "",
@@ -123,15 +129,12 @@ export default {
       let producto = this.Productos.productos.filter(
         (pro) => pro.idproducto === id
       );
-      console.log(producto[0].descripcion)
+      console.log(producto[0].descripcion);
       // this.$store.dispatch("getProducto", producto[0]);
       this.add_Venta.descripcion = producto[0].descripcion;
       this.add_Venta.precioventa = producto[0].precioventa;
-      this.add_Venta.iva10 = parseFloat(producto[0].precioventa)/11;
-      console.log(
-        "Producto seleccionado: ",
-         this.add_Venta.iva10.toFixed(2)
-      );
+      this.add_Venta.iva10 = parseFloat(producto[0].precioventa) / 11;
+      console.log("Producto seleccionado: ", this.add_Venta.iva10.toFixed(2));
     },
     agregarVenta() {
       console.log("agregando productos: ", this.add_Venta);
@@ -151,7 +154,7 @@ export default {
         iva5,
         iva10,
       });
-      
+      this.limpiardatos();
     },
 
     close() {
