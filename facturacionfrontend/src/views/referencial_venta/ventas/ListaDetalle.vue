@@ -80,7 +80,11 @@ export default {
   },
   methods:{
     removeItem(item) {
+<<<<<<< HEAD
       console.log(item);
+=======
+      console.log("Removiendo ítem: ", item);
+>>>>>>> 33f1fda88793bc283c03da270c6dda1714970a0e
       this.Venta.listaVentas.splice(item, 1);
     }
   }
