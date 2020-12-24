@@ -76,7 +76,15 @@ export const actions = {
                 .then(() => {
                     console.log("Good luck!", rootState.Productos.productos);
                     state.listaVentas=[]
-                    state.cabecera_venta =[]
+                    state.cabecera_venta ={
+                        idventas: 0,
+                        numerofactura: "",
+                        fecha: new Date().toISOString().substr(0, 10),
+                        totaliva5: 0,
+                        totaliva10: "",
+                        total: 0.0,
+                        cliente_idcliente: 1,   
+                    }
                 }).catch((err) => {
                     console.log("error: ", err);
                 });

@@ -8,7 +8,7 @@
       <!-- <v-responsive class="overflow-y-auto" max-height="calc(90vh - 520px)"> -->
       <template v-slot:item="{ item }">
         <tr>
-          <td>{{ item.producto_idproducto}}</td>
+          <td>{{ item.producto_idproducto }}</td>
           <td>{{ item.descripcion }}</td>
           <td>{{ item.cantidad }}</td>
           <td>{{ item.precioventa }}</td>
@@ -16,7 +16,14 @@
           <td>{{ item.iva10 }}</td>
           <td>{{ (item.SubTotal = item.precioventa * item.cantidad) }}</td>
           <td>
-            <v-btn class="mx-2" fab dark small color="red" @click="removeItem(item)">-</v-btn
+            <v-btn
+              class="mx-2"
+              fab
+              dark
+              small
+              color="red"
+              @click="removeItem(item)"
+              >-</v-btn
             >
           </td>
         </tr>
@@ -29,7 +36,7 @@
           <th class="title"></th>
           <th class="title"></th>
           <th class="title"></th>
-          <th class="title">{{TotalIva}}</th>
+          <th class="title">{{ TotalIva }}</th>
           <th class="title"></th>
           <th class="title"></th>
         </tr>
@@ -42,7 +49,7 @@
           <th class="title"></th>
           <th class="title"></th>
           <th class="title"></th>
-          <th class="title">{{TotalVentas}}</th>
+          <th class="title">{{ TotalVentas }}</th>
         </tr>
       </template>
     </v-data-table>
@@ -78,15 +85,15 @@ export default {
       return this.$store.getters.TotalIva;
     },
   },
-  methods:{
+  methods: {
     removeItem(item) {
-<<<<<<< HEAD
+      
       console.log(item);
-=======
+
       console.log("Removiendo ítem: ", item);
->>>>>>> 33f1fda88793bc283c03da270c6dda1714970a0e
+
       this.Venta.listaVentas.splice(item, 1);
-    }
-  }
+    },
+  },
 };
 </script>

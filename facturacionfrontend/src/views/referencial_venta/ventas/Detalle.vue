@@ -112,7 +112,7 @@ export default {
     limpiardatos(){
       this.add_Venta.descripcion = "";
       this.add_Venta.precioventa = "";
-      this.add_Venta.cantidad ="";
+      this.add_Venta.cantidad ="1";
     },
     detalle_venta() {
       return {
