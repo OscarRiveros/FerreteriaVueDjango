@@ -74,6 +74,15 @@
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
+          <v-list-group>
+             <v-list-item slot="activator">
+              <v-list-item-icon>
+                <v-icon>assignment_returned</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>Ventas</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
           <v-list-item v-for="venta in Ventas"
               :key="venta.title"
               link>
@@ -88,7 +97,7 @@
                 >
               </v-list-item-content>
           </v-list-item>
-         
+         </v-list-group>
         </template>
         <!-- Fin Menu administrar Productos -->
       </v-list>
@@ -150,6 +159,7 @@ export default {
     ],
     Ventas:[
       { title: "Ventas", icon:"shopping_cart", go: "/ventas"},
+      { title: "Ventas Lista", icon:"credit_card", go: "/ventasviews"},
     ],
   }),
 };

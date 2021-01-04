@@ -56,6 +56,12 @@ const routes = [
     name: 'Graficos',
     component: () => import(/* webpackChunkName: "about" */ '../views/referencial_venta/graficos/ProductosGrafico.vue')
   },
+  {
+    path: '/ventasviews',
+    name: 'VentasLista',
+    component: () => import(/* webpackChunkName: "about" */ '../components/VentasVista.vue')
+  },
+
 ]
 
 const router = new VueRouter({

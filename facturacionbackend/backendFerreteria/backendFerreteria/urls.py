@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from ferreteria.views import CategoriaViewSet, UnidadMedidaViewSet, ProveedorViewSet, ProductoViewSet, ClienteViewSet, ComprasViewSet, PagosViwewSet
+from ferreteria.views import CategoriaViewSet, UnidadMedidaViewSet, ProveedorViewSet, ProductoViewSet, ClienteViewSet, ComprasViewSet, PagosViwewSet, VentasViweSet
 from rest_framework import routers
 from ferreteria import views
 
@@ -27,7 +27,7 @@ router.register('proveedor', ProveedorViewSet)
 router.register('producto', ProductoViewSet)
 router.register('cliente',ClienteViewSet)
 # router.register('venta', VentasViewSet, basename='venta')
-# router.register('detalleventa', DetalleVentaViewSet)
+router.register('ventas', VentasViweSet)
 router.register('compras', ComprasViewSet)
 router.register('pagos', PagosViwewSet)
 

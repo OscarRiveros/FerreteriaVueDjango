@@ -45,6 +45,10 @@ class PagosViwewSet(viewsets.ModelViewSet):
     queryset = Pagos.objects.all()
     serializer_class = PagosSerializer
 
+class VentasViweSet(viewsets.ModelViewSet):
+    queryset = Ventas.objects.all()
+    serializer_class = VentasSerializer
+    
 @method_decorator(atomic, name='dispatch')
 class Vista_Ventas(APIView):    
     def post(self, request):

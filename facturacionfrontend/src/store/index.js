@@ -10,6 +10,7 @@ import * as Cliente from '../store/referencial_venta/cliente'
 import * as Compras from '../store/referencial_venta/compras'
 import * as Pagos from '../store/referencial_venta/pagos'
 import * as Venta from "../store/venta/venta"
+import * as VentasLista from "../store/referencial_venta/cobrosventa"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -29,5 +30,6 @@ export default new Vuex.Store({
     Compras,
     Pagos,
     Venta,
+    VentasLista,
   }
 })
